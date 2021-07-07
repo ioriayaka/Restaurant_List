@@ -11,8 +11,9 @@
 ---
 
 # 專案畫面
-![](https://i.imgur.com/m6DUCo7.jpg)
-![](https://i.imgur.com/Ff8xdOi.png)
+![](https://i.imgur.com/lWWu3Mt.png)
+![](https://i.imgur.com/sBxhgKn.jpg)
+
 
 ---
 
@@ -33,7 +34,7 @@
 1. 開啟終端機，並cd 要放專案的位置並執行:
 ```git clone https://github.com/ioriayaka/Restaurant_List.git```
 2. 進入專案資料夾
-```cd Restaurant_List-v2```
+```cd Restaurant_List```
 3. 安裝 npm 套件
 ```npm install```
 4. 安裝 nodemon 套件 (若未安裝)
@@ -44,3 +45,4 @@
 ```npm run dev```
 7. 當終端機出現以下字樣，表示啟動完成
 ```The Express server is running on http://localhost:3000```
+
