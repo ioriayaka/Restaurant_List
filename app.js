@@ -1,7 +1,5 @@
 //require packages used in the project
 const express = require('express')
-// 載入 mongoose
-const mongoose = require('mongoose') 
 //載入 Restaurant Models
 const Restaurant = require('./models/restaurant')
 // 引用路由器
@@ -14,18 +12,8 @@ const port = 3000
 const exphbs = require('express-handlebars')
 // 載入 method-override
 const methodOverride = require('method-override')
-// 設定連線到 mongoDB
-mongoose.connect('mongodb://localhost/restaurantData', { useNewUrlParser: true, useUnifiedTopology: true })
-// 取得資料庫連線狀態
-const db = mongoose.connection
-// 連線異常
-db.on('error', () => {
-  console.log('mongodb error!')
-})
-// 連線成功
-db.once('open', () => {
-  console.log('mongodb connected!')
-})
+//Mongoose 連線
+require('./config/mongoose')
 //setting template engine
 app.engine('handlebars', exphbs({ defaultLayout: 'main' }))
 app.set('view engine', 'handlebars')
