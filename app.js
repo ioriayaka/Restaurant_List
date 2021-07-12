@@ -10,6 +10,8 @@ const app = express()
 const port = 3000
 //require express-handlebars
 const exphbs = require('express-handlebars')
+// 載入 method-override
+const methodOverride = require('method-override')
 // 設定連線到 mongoDB
 mongoose.connect('mongodb://localhost/restaurantData', { useNewUrlParser: true, useUnifiedTopology: true })
 // 取得資料庫連線狀態
@@ -29,6 +31,8 @@ app.set('view engine', 'handlebars')
 app.use(express.static('public'))
 // 用 app.use 規定每一筆請求都需要透過 body-parser 進行前置處理
 app.use(bodyParser.urlencoded({ extended: true }))
+// 設定每一筆請求都會透過 methodOverride 進行前置處理
+app.use(methodOverride('_method'))
 //index routes setting
 app.get('/', (req, res) => {
   Restaurant.find()
@@ -85,7 +89,7 @@ app.get('/restaurants/:id/edit', (req, res) => {
     .then((restaurant) => res.render('edit', { restaurant }))
     .catch(error => console.log(error))
 })
-app.post('/restaurants/:id/edit', (req, res) => {
+app.put('/restaurants/:id', (req, res) => {
   const id = req.params.id
   const { name, name_en, category, image, location, phone, google_map, rating, description } = req.body
   return Restaurant.findById(id)
@@ -106,7 +110,7 @@ app.post('/restaurants/:id/edit', (req, res) => {
     .catch(error => console.log(error))
 })
 // delete route
-app.post('/restaurants/:id/delete', (req, res) => {
+app.delete('/restaurants/:id', (req, res) => {
   const id = req.params.id
   return Restaurant.findById(id)
     .then(restaurant => restaurant.remove())

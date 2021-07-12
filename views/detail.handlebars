@@ -38,7 +38,7 @@
         style="max-width: 600px;">
       <div class="d-flex justify-content-start">
         <a href="/restaurants/{{ restaurant._id }}/edit" type="button" class="btn btn-outline-success btn-sm me-1">Edit</a>
-        <form action="/restaurants/{{ restaurant._id }}/delete" method="POST">
+        <form action="/restaurants/{{ restaurant._id }}?_method=DELETE" method="POST">
           <button type="submit" class="btn btn-outline-danger btn-sm btn-delete">Delete</button>
         </form>
         <a href="/" type="button" class="btn btn-outline-primary btn-sm me-1">Back</a>
