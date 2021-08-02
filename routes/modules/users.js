@@ -6,8 +6,12 @@ router.get('/login', (req, res) => {
   res.render('login')
 })
 
-router.post('/login', (req, res) => {
-})
+// 加入 middleware，驗證 request 登入狀態
+router.post('/login', passport.authenticate('local', {
+  successRedirect: '/',
+  failureRedirect: '/users/login'
+}))
+
 router.get('/register', (req, res) => {
   res.render('register')
 })
