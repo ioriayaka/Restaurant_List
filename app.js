@@ -6,6 +6,7 @@ const Restaurant = require('./models/restaurant')
 const routes = require('./routes')
 // 引用 body-parser
 const bodyParser = require('body-parser')
+const session = require('express-session')
 const app = express()
 const port = 3000
 //require express-handlebars
@@ -19,6 +20,12 @@ app.engine('handlebars', exphbs({ defaultLayout: 'main' }))
 app.set('view engine', 'handlebars')
 // setting static files
 app.use(express.static('public'))
+
+app.use(session({
+  secret: 'ThisIsMySecret',
+  resave: false,
+  saveUninitialized: true
+}))
 // 用 app.use 規定每一筆請求都需要透過 body-parser 進行前置處理
 app.use(bodyParser.urlencoded({ extended: true }))
 // 設定每一筆請求都會透過 methodOverride 進行前置處理
