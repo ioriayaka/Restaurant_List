@@ -15,6 +15,12 @@ router.post('/login', passport.authenticate('local', {
 router.get('/register', (req, res) => {
   res.render('register')
 })
+//新增登出路由
+router.get('/logout', (req, res) => {
+  req.logout()
+  res.redirect('/users/login')
+})
+
 //儲存使用者資訊
 router.post('/register', (req, res) => {
   // 取得註冊表單參數
