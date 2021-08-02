@@ -36,7 +36,6 @@ app.use(methodOverride('_method'))
 usePassport(app)
 //設定本地變數 res.locals
 app.use((req, res, next) => {
-  console.log(req.user)
   res.locals.isAuthenticated = req.isAuthenticated()
   res.locals.user = req.user
   next()
