@@ -1,5 +1,7 @@
 const express = require('express')
 const router = express.Router()
+// 引用 passport
+const passport = require('passport')
 //引入 User model
 const User = require('../../models/user')
 router.get('/login', (req, res) => {
