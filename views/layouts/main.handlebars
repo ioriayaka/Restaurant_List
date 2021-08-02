@@ -1,6 +1,7 @@
 <!-- ./views/layouts/main.handlebars -->
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,6 +12,7 @@
   <link rel="stylesheet" href="/stylesheets/index.css">
   <link rel="stylesheet" href="/stylesheets/show.css">
 </head>
+
 <body>
   <header>
     <!-- navigation -->
@@ -19,12 +21,15 @@
         <a class="navbar-brand" href="/">
           <img src="https://assets-lighthouse.s3.amazonaws.com/uploads/image/file/6227/restaurant-list-logo.png"
             width="30" height="30" class="d-inline-block align-top" alt="好。吃">
-          我的餐廳清單
+          {{#if isAuthenticated}}{{ user.name}}的{{/if}}餐廳清單
         </a>
-        <a class="navbar-brand" href="/restaurants/new">新增餐廳</a>
       </div>
+      {{#if isAuthenticated}}
+      <a href="/users/logout" class="btn btn-outline-info">Logout</a>
+      {{else}}
+      <a href="/users/login" class="btn btn-outline-info">Login</a>
+      {{/if}}
     </nav>
-
     <div class="banner"></div>
   </header>
   <!-- partial templates will replace the part of "body" here -->
