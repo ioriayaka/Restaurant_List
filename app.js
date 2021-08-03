@@ -8,10 +8,13 @@ const routes = require('./routes')
 const bodyParser = require('body-parser')
 const session = require('express-session')
 const flash = require('connect-flash')   // 引用套件
+if (process.env.NODE_ENV !== 'production') {
+  require('dotenv').config()
+}
 // 載入設定檔，要寫在 express-session 以後
 const usePassport = require('./config/passport')
 const app = express()
-const port = 3000
+const PORT = process.env.PORT
 //require express-handlebars
 const exphbs = require('express-handlebars')
 // 載入 method-override
@@ -25,7 +28,7 @@ app.set('view engine', 'handlebars')
 app.use(express.static('public'))
 
 app.use(session({
-  secret: 'ThisIsMySecret',
+  secret: process.env.SESSION_SECRET,
   resave: false,
   saveUninitialized: true
 }))
@@ -47,6 +50,6 @@ app.use((req, res, next) => {
 
 app.use(routes)
 //start and listen on the Express server
-app.listen(port, () => {
-  console.log(`Express is listening on localhost:${port}`)
+app.listen(PORT, () => {
+  console.log(`Express is listening on localhost:${PORT}`)
 })
