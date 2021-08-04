@@ -7,7 +7,7 @@
 4. 使用者可以新增餐廳和其相關資訊
 5. 使用者可以修改餐廳的資訊
 6. 使用者可以刪除餐廳
-
+7. 使用者可以註冊帳號或是用 Facebook Login 直接登入，建立並管理專屬他的一個餐廳清單
 ---
 
 # 專案畫面
@@ -46,3 +46,10 @@
 7. 當終端機出現以下字樣，表示啟動完成
 ```The Express server is running on http://localhost:3000```
 
+# 預設使用者 SEED_USER
+
+>* email: user1@example.com
+>* password: 12345678
+
+>* email: user2@example.com
+>* password: 12345678
